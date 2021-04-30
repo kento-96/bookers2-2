@@ -31,10 +31,13 @@ def update
 end
 
 def destroy
+  @book=Book.find(params[:id])
+  @book.destroy
+  redirect_to books_path
 end
 
 private
   def book_params
-    params.require(:book).permit(:title,:body)
+    params.permit(:title,:body)
   end
 end
